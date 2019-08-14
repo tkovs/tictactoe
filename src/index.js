@@ -2,9 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
+const SquareInfo = props => {
+  return (
+    <div className="square square-info">{props.value}</div>
+  )
+}
+
 const Square = props => {
   return (
-    <button className="square" onClick={props.onClick} >
+    <button className="square square-btn" onClick={props.onClick} >
       {props.value}
     </button>
   )
@@ -24,19 +30,27 @@ class Board extends React.Component {
     return (
       <div>
         <div className="board-row">
+          <SquareInfo value={0} />
+          <SquareInfo value={1} />
+          <SquareInfo value={2} />
+        </div>
+        <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
+          <SquareInfo value={0} />
         </div>
         <div className="board-row">
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
+          <SquareInfo value={1} />
         </div>
         <div className="board-row">
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
+          <SquareInfo value={2} />
         </div>
       </div>
     )

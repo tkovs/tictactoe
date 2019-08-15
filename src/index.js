@@ -27,32 +27,21 @@ class Board extends React.Component {
   }
 
   render() {
+    let i = 0
+
     return (
-      <div>
+      <>
         <div className="board-row">
-          <SquareInfo value={0} />
-          <SquareInfo value={1} />
-          <SquareInfo value={2} />
+          { [0, 1, 2].map((col) => <SquareInfo value={col} />) }
         </div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-          <SquareInfo value={0} />
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-          <SquareInfo value={1} />
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-          <SquareInfo value={2} />
-        </div>
-      </div>
+
+        { [0, 1, 2].map((row) => 
+          <div className="board-row">
+            { [0, 1, 2].map((col) => this.renderSquare(i++)) }
+            { <SquareInfo value={row} />}
+          </div>
+        ) }
+      </>
     )
   }
 }

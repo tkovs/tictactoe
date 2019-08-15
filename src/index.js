@@ -64,7 +64,8 @@ class Game extends React.Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
-        coordinates: []
+        coordinates: [],
+        selectedHistory: null
       }],
       stepNumber: 0,
       xIsNext: true
@@ -86,7 +87,12 @@ class Game extends React.Component {
 
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button
+            className={this.state.selectedHistory !== move ? "" : "history-selected"}
+            onClick={() => this.jumpTo(move)}
+          >
+            {desc}
+          </button>
         </li>
       )
     })
@@ -131,6 +137,7 @@ class Game extends React.Component {
         squares: squares,
         coordinates: this.mapMoveToCoordinates(i)
       }]),
+      selectedHistory: null,
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     })
@@ -139,7 +146,8 @@ class Game extends React.Component {
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0
+      xIsNext: (step % 2) === 0,
+      selectedHistory: step
     })
   }
 

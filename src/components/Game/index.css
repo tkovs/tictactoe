@@ -1,0 +1,34 @@
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  float: left;
+  line-height: 34px;
+  height: 34px;
+  width: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  text-align: center;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.history-selected {
+  font-weight: bold;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}

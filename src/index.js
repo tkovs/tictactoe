@@ -8,7 +8,7 @@ const SquareInfo = props => {
   )
 }
 
-const Square = props => {
+const SquareButton = props => {
   return (
     <button className="square square-btn" onClick={props.onClick} >
       {props.value}
@@ -19,7 +19,7 @@ const Square = props => {
 class Board extends React.Component {
   renderSquare(i) {
     return (
-      <Square
+      <SquareButton
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
       />
@@ -63,7 +63,8 @@ class Game extends React.Component {
 
     this.state = {
       history: [{
-        squares: Array(9).fill(null)
+        squares: Array(9).fill(null),
+        coordinates: []
       }],
       stepNumber: 0,
       xIsNext: true
@@ -76,8 +77,11 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares)
 
     const moves = history.map((step, move) => {
+      const col = step.coordinates.col
+      const row = step.coordinates.row
+
       const desc = move ?
-        `Go to move #${move}` :
+        `Go to move #${move} (${col}, ${row})` :
         'Go to game start'
 
       return (
@@ -125,6 +129,7 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
+        coordinates: this.mapMoveToCoordinates(i)
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
@@ -136,6 +141,16 @@ class Game extends React.Component {
       stepNumber: step,
       xIsNext: (step % 2) === 0
     })
+  }
+
+  mapMoveToCoordinates(cell) {
+    let coordinates = [
+      {col: 0, row: 0}, {col: 1, row: 0}, {col: 2, row: 0},
+      {col: 0, row: 1}, {col: 1, row: 1}, {col: 2, row: 1},
+      {col: 0, row: 2}, {col: 1, row: 2}, {col: 2, row: 2},
+    ]
+
+    return coordinates[cell]
   }
 }
 

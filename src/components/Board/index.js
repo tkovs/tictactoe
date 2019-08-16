@@ -1,28 +1,28 @@
 import React from 'react'
 import './index.css'
 import { connect } from 'react-redux'
-import { tickSquare } from '../../actions'
+import { tickSquare, addHistory } from '../../actions'
 import SquareButton from '../Square/SquareButton'
 import SquareInfo from '../Square/SquareInfo'
 
-const mapStateToProps = ({ history, stepNumber }) => ({
-  history, stepNumber
+const mapStateToProps = ({ history, board }) => ({
+  squares: board.squares, stepNumber: history.stepNumber
 })
 
 const mapDispatchToProps = (dispatch) => ({
   handleClick: index => {
     dispatch(tickSquare(index))
+    dispatch(addHistory(index))
   }
 })
 
 const Board = (props) => {
-  const history = props.history
-  const current = history[props.stepNumber]
+  const squares = props.squares
   let i = 0
 
   const renderSquareButton = (i) => (
     <SquareButton
-      value={current.squares[i]}
+      value={squares[i]}
       onClick={() => props.handleClick(i)}
     />
   )

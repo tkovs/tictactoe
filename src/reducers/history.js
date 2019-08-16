@@ -31,7 +31,8 @@ const history = (state = INITIAL_STATE, action) => {
           coordinates: mapMoveToCoordinates(action.position)
         }]),
         stepNumber: history.length,
-        xIsNext: !state.xIsNext
+        xIsNext: !state.xIsNext,
+        selectedHistory: null
       }
     case JUMP_TO:
       return {

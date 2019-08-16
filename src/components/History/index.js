@@ -1,9 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { calculateWinner } from '../../utils'
+import { jumpTo, updateBoard } from '../../actions'
 
 const mapStateToProps = ({ history }) => ({
-  history: history.history, xIsNext: history.xIsNext
+  history: history.history,
+  selectedHistory: history.selectedHistory,
+  xIsNext: history.xIsNext
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  jumpTo: (step, board) => {
+    dispatch(jumpTo(step))
+    dispatch(updateBoard(board, step))
+  }
 })
 
 const History = (props) => {
@@ -17,7 +27,10 @@ const History = (props) => {
 
     return (
       <li key={move}>
-        <button>
+        <button
+          className={props.selectedHistory !== move ? "" : "history-selected"}
+          onClick={() => props.jumpTo(move, props.history[move])}
+        >
           {desc}
         </button>
       </li>
@@ -47,5 +60,5 @@ const History = (props) => {
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(History)

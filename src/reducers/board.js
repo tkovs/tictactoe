@@ -1,4 +1,4 @@
-import { TICK_SQUARE } from '../actions'
+import { TICK_SQUARE, UPDATE_BOARD } from '../actions'
 import { calculateWinner } from '../utils'
 
 const INITIAL_STATE = {
@@ -21,6 +21,11 @@ const board = (state = INITIAL_STATE, action) => {
         ...state,
         squares: squares,
         xIsNext: !state.xIsNext
+      }
+    case UPDATE_BOARD:
+      return {
+        squares: action.board.squares,
+        xIsNext: (action.board.step % 2) === 0
       }
     default:
       return state

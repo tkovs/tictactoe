@@ -1,4 +1,4 @@
-import { ADD_HISTORY } from '../actions'
+import { ADD_HISTORY, JUMP_TO } from '../actions'
 import { calculateWinner, mapMoveToCoordinates } from '../utils'
 
 const INITIAL_STATE = {
@@ -7,7 +7,8 @@ const INITIAL_STATE = {
     coordinates: [],
   }],
   stepNumber: 0,
-  xIsNext: true
+  xIsNext: true,
+  selectedHistory: null
 }
 
 const history = (state = INITIAL_STATE, action) => {
@@ -31,6 +32,13 @@ const history = (state = INITIAL_STATE, action) => {
         }]),
         stepNumber: history.length,
         xIsNext: !state.xIsNext
+      }
+    case JUMP_TO:
+      return {
+        ...state,
+        stepNumber: action.step,
+        xIsNext: (action.step % 2) === 0,
+        selectedHistory: action.step
       }
     default:
       return state

@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { calculateWinner } from '../../utils'
 
 const mapStateToProps = ({ history }) => ({
-  history: history.history
+  history: history.history, xIsNext: history.xIsNext
 })
 
 const History = (props) => {
@@ -23,9 +24,20 @@ const History = (props) => {
     )
   })
 
+  const winner = calculateWinner(props.history[props.history.length - 1].squares)
+  let status
+
+  if (winner) {
+    status = `Winner: ${winner}`
+  } else if (props.history.length === 10) {
+    status = 'Drawed'
+  } else {
+    status = `Next player: ${props.xIsNext ? 'X' : 'O'}`
+  }
+
   return (
     <>
-      <div>Next player: ?</div>
+      <div>{status}</div>
       <ol>
         {moves}
       </ol>

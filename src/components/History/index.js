@@ -1,20 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { calculateWinner } from '../../utils'
-import { jumpTo, updateBoard } from '../../actions'
-
-const mapStateToProps = ({ history }) => ({
-  history: history.history,
-  selectedHistory: history.selectedHistory,
-  xIsNext: history.xIsNext
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  jumpTo: (step, board) => {
-    dispatch(jumpTo(step))
-    dispatch(updateBoard(board, step))
-  }
-})
 
 const History = (props) => {
   const moves = props.history.map((step, move) => {
@@ -58,7 +43,4 @@ const History = (props) => {
   )
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(History)
+export default History

@@ -1,20 +1,7 @@
 import React from 'react'
 import './index.css'
-import { connect } from 'react-redux'
-import { tickSquare, addHistory } from '../../actions'
 import SquareButton from '../Square/SquareButton'
 import SquareInfo from '../Square/SquareInfo'
-
-const mapStateToProps = ({ history, board }) => ({
-  squares: board.squares, stepNumber: history.stepNumber
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  handleClick: index => {
-    dispatch(tickSquare(index))
-    dispatch(addHistory(index))
-  }
-})
 
 const Board = (props) => {
   const squares = props.squares
@@ -43,7 +30,4 @@ const Board = (props) => {
   )
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Board)
+export default Board

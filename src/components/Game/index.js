@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
-import Board from '../Board'
-import History from '../History'
+import Board from '../../containers/Board'
+import History from '../../containers/History'
 
 const Game = (props) => {
   return (

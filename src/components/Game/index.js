@@ -3,7 +3,7 @@ import './index.css'
 import Board from '../../containers/Board'
 import History from '../../containers/History'
 
-const Game = (props) => {
+const Game = () => {
   return (
     <div className="game">
       <div className="game-board">

@@ -1,4 +1,4 @@
-import { ADD_HISTORY, JUMP_TO } from '../actions'
+import { ADD_HISTORY, JUMP_TO } from '../actions/types'
 import { calculateWinner, mapMoveToCoordinates } from '../utils'
 
 const INITIAL_STATE = {

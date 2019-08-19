@@ -1,4 +1,4 @@
-import { TICK_SQUARE, UPDATE_BOARD } from '../actions'
+import { TICK_SQUARE, UPDATE_BOARD } from '../actions/types'
 import { calculateWinner } from '../utils'
 
 const INITIAL_STATE = {

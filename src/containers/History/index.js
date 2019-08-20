@@ -1,18 +1,13 @@
 import { connect } from 'react-redux'
 import History from '../../components/History'
-import { jumpTo, updateBoard } from '../../actions'
+import { jumpTo } from '../../actions'
 
-const mapStateToProps = ({ history }) => ({
-  history: history.history,
-  selectedHistory: history.selectedHistory,
-  xIsNext: history.xIsNext
+const mapStateToProps = ({ history, step }) => ({
+  history, step
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  jumpTo: (step, board) => {
-    dispatch(jumpTo(step))
-    dispatch(updateBoard(board, step))
-  }
+  handleClick: (step) => dispatch(jumpTo(step))
 })
 
 export default connect(

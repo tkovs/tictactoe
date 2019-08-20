@@ -8,10 +8,10 @@ const Board = (props) => {
   let i = 0
   let squareInfoKey = 0
 
-  const renderSquareButton = (i) => (
+  const renderSquareButton = (i, step) => (
     <SquareButton
       value={squares[i]}
-      onClick={() => props.handleClick(i)}
+      onClick={() => props.handleClick(i, step)}
       key={i}
     />
   )
@@ -24,7 +24,7 @@ const Board = (props) => {
 
       { [0, 1, 2].map((row) => 
         <div className="board-row" key={i}>
-          { [0, 1, 2].map((col) => renderSquareButton(i++)) }
+          { [0, 1, 2].map((col) => renderSquareButton(i++, props.step)) }
           { <SquareInfo value={squareInfoKey++} />}
         </div>
       ) }

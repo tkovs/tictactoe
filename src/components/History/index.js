@@ -13,8 +13,8 @@ const History = (props) => {
     return (
       <li key={move}>
         <button
-          className={props.selectedHistory !== move ? "" : "history-selected"}
-          onClick={() => props.jumpTo(move, props.history[move])}
+          className={props.step !== move ? "" : "history-selected"}
+          onClick={() => props.handleClick(move)}
         >
           {desc}
         </button>
@@ -22,15 +22,16 @@ const History = (props) => {
     )
   })
 
-  const winner = calculateWinner(props.history[props.history.length - 1].squares)
+  const winner = calculateWinner(props.history[props.step].squares)
   let status
 
   if (winner) {
     status = `Winner: ${winner}`
-  } else if (props.history.length === 10) {
+  } else if (props.step === 9) {
     status = 'Drawed'
   } else {
-    status = `Next player: ${props.xIsNext ? 'X' : 'O'}`
+    const player = (props.step % 2) ? 'O' : 'X'
+    status = `Next player: ${player}`
   }
 
   return (

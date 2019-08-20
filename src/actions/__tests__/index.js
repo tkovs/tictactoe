@@ -18,11 +18,32 @@ describe('game actions', () => {
     })
   })
 
+  it('clearFeedback should create CLEAR_FEEDBACK action', () => {
+    expect(actions.clearFeedback()).toEqual({
+      type: types.CLEAR_FEEDBACK,
+    })
+  })
+
   it('jumpTo should create JUMP_TO action', () => {
     expect(actions.jumpTo(1)).toEqual({
       type: types.JUMP_TO,
       payload: {
         step: 1
+      }
+    })
+  })
+
+  it('giveFeedback should create GIVE_FEEDBACK action', () => {
+    expect(
+      actions.giveFeedback(
+        'Posição ocupada',
+        actions.FeedbackCategories.FAILURE
+      )
+    ).toEqual({
+      type: types.GIVE_FEEDBACK,
+      payload: {
+        feedback: 'Posição ocupada',
+        category: actions.FeedbackCategories.FAILURE
       }
     })
   })

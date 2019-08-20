@@ -1,0 +1,13 @@
+.feedback {
+  padding: 1em;
+}
+
+.feedback-failure {
+  color: white;
+  background-color: #ff7272;
+}
+
+.feedback-success {
+  color: white;
+  background-color: #9be96e;
+}

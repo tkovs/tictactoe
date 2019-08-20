@@ -1,3 +1,5 @@
 export const TICK_SQUARE = 'TICK_SQUARE'
 export const INCREMENT_STEP = 'INCREMENT_STEP'
 export const JUMP_TO = 'JUMP_TO'
+export const GIVE_FEEDBACK = 'GIVE_FEEDBACK'
+export const CLEAR_FEEDBACK = 'CLEAR_FEEDBACK'

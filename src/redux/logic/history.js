@@ -1,6 +1,11 @@
 import * as types from '../../actions/types'
 import { createLogic } from 'redux-logic'
-import { incrementStep } from '../../actions'
+import {
+  incrementStep,
+  giveFeedback,
+  clearFeedback,
+  FeedbackCategories,
+} from '../../actions'
 import { calculateWinner } from '../../utils'
 
 const tickSquareHistoryLogic = createLogic({
@@ -10,18 +15,24 @@ const tickSquareHistoryLogic = createLogic({
     const step = getState().step
     const squares = history[step].squares
 
-    if (squares[action.payload.position]) {
+    if (calculateWinner(squares)) {
       reject()
     }
 
-    if (calculateWinner(squares)) {
-      reject()
+    if (squares[action.payload.position]) {
+      reject(
+        giveFeedback(
+          'Posição ocupada',
+          FeedbackCategories.FAILURE
+        )
+      )
     }
 
     allow(action)
   },
   process({ getState, action }, dispatch, done) {
     dispatch(incrementStep())
+    dispatch(clearFeedback())
     done()
   }
 })

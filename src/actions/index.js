@@ -18,3 +18,20 @@ export const jumpTo = (step) => ({
     step 
   }
 })
+
+export const FeedbackCategories = {
+  SUCCESS: 'SUCCESS',
+  FAILURE: 'FAILURE'
+}
+
+export const giveFeedback = (feedback, category) => ({
+  type: types.GIVE_FEEDBACK,
+  payload: {
+    feedback,
+    category
+  }
+})
+
+export const clearFeedback = () => ({
+  type: types.CLEAR_FEEDBACK
+})

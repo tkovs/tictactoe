@@ -5,7 +5,7 @@ export default function reducer(state = 0, action) {
     case types.INCREMENT_STEP:
       return state + 1
     case types.JUMP_TO:
-      return action.payload
+      return action.payload.step
     default:
       return state
   }  

@@ -21,7 +21,9 @@ describe('game actions', () => {
   it('jumpTo should create JUMP_TO action', () => {
     expect(actions.jumpTo(1)).toEqual({
       type: types.JUMP_TO,
-      payload: 1
+      payload: {
+        step: 1
+      }
     })
   })
 })

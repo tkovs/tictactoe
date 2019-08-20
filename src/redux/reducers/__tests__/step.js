@@ -26,14 +26,18 @@ describe('step reducer', () => {
     expect(
       step(undefined, {
         type: types.JUMP_TO,
-        payload: 2
+        payload: {
+          step: 2
+        }
       })
     ).toEqual(2)
 
     expect(
       step(6, {
         type: types.JUMP_TO,
-        payload: 5
+        payload: {
+          step: 5
+        }
       })
     ).toEqual(5)
   })

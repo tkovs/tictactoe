@@ -10,5 +10,5 @@ export const incrementStep = () => ({
 })
 
 export const jumpTo = (step) => ({
-  type: types.JUMP_TO, payload: step
+  type: types.JUMP_TO, payload: { step }
 })

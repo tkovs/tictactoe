@@ -1,4 +1,4 @@
-import { history } from '../index'
+import history from '../history'
 import * as types from '../../../actions/types'
 
 describe('history reducer', () => {

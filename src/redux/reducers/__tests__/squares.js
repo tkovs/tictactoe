@@ -1,4 +1,4 @@
-import { squares } from '../index'
+import squares from '../squares'
 import * as types from '../../../actions/types';
 
 describe('squares reducer', () => {

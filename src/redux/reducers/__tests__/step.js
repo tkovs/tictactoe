@@ -1,4 +1,4 @@
-import { step } from '../index'
+import step from '../step'
 import * as types from '../../../actions/types'
 
 describe('step reducer', () => {

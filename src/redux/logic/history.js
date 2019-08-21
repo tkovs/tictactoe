@@ -32,7 +32,18 @@ const tickSquareHistoryLogic = createLogic({
   },
   process({ getState, action }, dispatch, done) {
     dispatch(incrementStep())
-    dispatch(clearFeedback())
+
+    const history = getState().history
+    const step = getState().step
+    const squares = history[step].squares
+    const winner = calculateWinner(squares)
+
+    if (winner) {
+      dispatch(giveFeedback(`Parabéns jogador ${winner}, você venceu!`, FeedbackCategories.SUCCESS))
+    } else {
+      dispatch(clearFeedback())
+    }
+
     done()
   }
 })

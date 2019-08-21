@@ -14,17 +14,17 @@ const tickSquareHistoryLogic = createLogic({
     const history = getState().history
     const step = getState().step
     const squares = history[step].squares
-
-    if (calculateWinner(squares)) {
-      reject()
-    }
+    const winner = calculateWinner(squares)
 
     if (squares[action.payload.position]) {
       reject(
-        giveFeedback(
-          'Posição ocupada',
-          FeedbackCategories.FAILURE
-        )
+        giveFeedback('Posição ocupada', FeedbackCategories.FAILURE)
+      )
+    }
+
+    if (winner) {
+      reject(
+        giveFeedback(`O jogo já terminou. O jogador ${winner} venceu.`, FeedbackCategories.FAILURE)
       )
     }
 
@@ -38,5 +38,5 @@ const tickSquareHistoryLogic = createLogic({
 })
 
 export default [
-  tickSquareHistoryLogic
+  tickSquareHistoryLogic,
 ]

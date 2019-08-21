@@ -37,6 +37,15 @@ const tickSquareHistoryLogic = createLogic({
   }
 })
 
+const jumpToHistoryLogic = createLogic({
+  type: types.JUMP_TO,
+  process({ getState, action }, dispatch, done) {
+    dispatch(clearFeedback())
+    done()
+  }
+})
+
 export default [
   tickSquareHistoryLogic,
+  jumpToHistoryLogic,
 ]

@@ -1,5 +1,3 @@
-import cy from 'cypress'
-
 describe('Check validations', () => {
   it('Tick in a ticked position', () => {
     cy.visit('localhost:3000')

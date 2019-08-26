@@ -1,5 +1,3 @@
-import cy from 'cypress'
-
 describe('Game testing', () => {
   it('Play full match with winner X', () => {
     cy.visit('localhost:3000')

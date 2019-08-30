@@ -2,6 +2,7 @@ import React from 'react'
 import './index.css'
 import SquareButton from '../Square/SquareButton'
 import SquareInfo from '../Square/SquareInfo'
+import PropTypes from 'prop-types'
 
 const Board = (props) => {
   const squares = props.squares
@@ -30,6 +31,11 @@ const Board = (props) => {
       ) }
     </>
   )
+}
+
+Board.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  step: PropTypes.string.isRequired
 }
 
 export default Board

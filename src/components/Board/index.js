@@ -35,7 +35,8 @@ const Board = (props) => {
 
 Board.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  step: PropTypes.string.isRequired
+  step: PropTypes.string.isRequired,
+  squares: PropTypes.arrayOf(PropTypes.number).isRequired,
 }
 
 export default Board

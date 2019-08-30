@@ -1,5 +1,6 @@
 import React from 'react'
 import { calculateWinner } from '../../utils'
+import PropTypes from 'prop-types'
 
 const History = (props) => {
   const moves = props.history.map((step, move) => {
@@ -42,6 +43,11 @@ const History = (props) => {
       </ol>
     </>
   )
+}
+
+History.propTypes = {
+  history: PropTypes.arrayOf(PropTypes.object).isRequired,
+  step: PropTypes.number.isRequired
 }
 
 export default History

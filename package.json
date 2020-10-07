@@ -35,6 +35,11 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^3.4.1"
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.5",
+    "@types/react": "^16.9.51",
+    "@types/react-dom": "^16.9.8",
+    "cypress": "^3.4.1",
+    "typescript": "^4.0.3"
   }
 }

@@ -9,7 +9,7 @@ interface SquareButtonProps {
 type Props = SquareButtonProps
 
 const SquareButton: FC<Props> = ({ onClick, value } : Props) => (
-  <button className="square square-btn" onClick={onClick} >
+  <button className="square square-btn" onClick={onClick}>
     {value}
   </button>
 )

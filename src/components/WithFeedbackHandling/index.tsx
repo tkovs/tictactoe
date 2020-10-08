@@ -1,4 +1,4 @@
-import React, { FC, ComponentType, ReactChildren } from 'react'
+import React, { FC, ComponentType, ReactChild } from 'react'
 import './index.css'
 import { FeedbackCategories } from '../../actions'
 
@@ -6,9 +6,9 @@ import { FeedbackCategories } from '../../actions'
 
 interface WithFeedbackHandlingProps {
   showFeedback: boolean,
-  feedback: boolean,
+  feedback: string,
   category: string,
-  children: ReactChildren,
+  children: ReactChild,
 }
 
 type Props = WithFeedbackHandlingProps

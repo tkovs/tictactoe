@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { FC, ComponentType, ReactChild } from 'react'
 import './index.css'
 import { FeedbackCategories } from '../../actions'
 
 // IMPLEMENTAR CORES NO FEEDBACK
 
-const WithFeedbackHandling = WrappedComponent => ({showFeedback, feedback, category, children}) => (
+interface WithFeedbackHandlingProps {
+  showFeedback: boolean,
+  feedback: string,
+  category: string,
+  children: ReactChild,
+}
+
+type Props = WithFeedbackHandlingProps
+
+const WithFeedbackHandling = (WrappedComponent: ComponentType): FC<Props> => ({showFeedback, feedback, category, children}: Props) => (
   <WrappedComponent>
     { showFeedback &&
       <div 

@@ -3,7 +3,7 @@ import './index.css'
 
 interface SquareButtonProps {
   onClick: () => void,
-  value: string,
+  value: number,
 }
 
 type Props = SquareButtonProps

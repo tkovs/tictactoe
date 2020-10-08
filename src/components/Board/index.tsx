@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { FC } from 'react'
 import './index.css'
 import SquareButton from '../Square/SquareButton'
 import SquareInfo from '../Square/SquareInfo'
-import PropTypes from 'prop-types'
 
-const Board = (props) => {
+interface BoardProps {
+  handleClick: (index: number, step: string) => void
+  step: string
+  squares: number[]
+}
+
+type Props = BoardProps
+
+const Board: FC<Props> = (props: Props) => {
   const squares = props.squares
   let i = 0
   let squareInfoKey = 0
 
-  const renderSquareButton = (i, step) => (
+  const renderSquareButton = (i: number, step: string) => (
     <SquareButton
       value={squares[i]}
       onClick={() => props.handleClick(i, step)}
@@ -31,12 +38,6 @@ const Board = (props) => {
       ) }
     </>
   )
-}
-
-Board.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  step: PropTypes.string.isRequired,
-  squares: PropTypes.arrayOf(PropTypes.number).isRequired,
 }
 
 export default Board
